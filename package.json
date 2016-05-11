@@ -1,12 +1,9 @@
 {
-  "name": "hm-file-structure",
+  "name": "unofficial-fussball-de-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "author": "Maurice Wipf",
   "license": "GPL",
   "dependencies": {
     "boom": "^3.1.1",

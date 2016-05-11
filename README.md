@@ -1,51 +1,56 @@
-# Jam API
-Jam API is a service that allows you to turn any site into a JSON accessible api using CSS selectors. To get started simply run a post request to http://www.jamapi.xyz with formdata of "url" and "json_data", here's an example of what your data should look like:
-```json
+# Unofficial Fussball.de API
+
+This project uses [Jam API](https://github.com/gavindinubilo/jam-api). It turns CSS selectors into a JSON accessible API.
+
+## JSON Output
+
+```
 {
-  "title": "title",
-  "logo": ".nav-logo img",
-  "paragraphs": [{ "elem": ".home-post h1", "value": "text"}], 
-  "links": [{"elem": ".home-post > a:first-of-type", "location": "href"}]
-}
+    "league": "Kreisklasse A Bruchsal",
+    "saison": "Saison 15/16",
+    "clubs": [
+        {
+            "index": 0,
+            "value": {
+                "club": "SV Oberderdingen"
+            }
+        },
+        {...}
+      ],
+    "club-logos": [
+        {
+            "index": 0,
+            "value": {
+                "club-logo": "http://www.fussball.de/..."
+            }
+        },
+        {...}
+      ],
+    "ranks": [...],
+    "games-played": [...],
+    "games-won": [...],
+    "games-draw": [...],
+    "games-lost": [...],
+    "goals": [...],
+    "goals-diff": [...],
+    "points": [...]      
+  }  
 ```
-Using API you can simply generate JSON data from any website.
 
-## Code samples
-### nodejs
-```nodejs
-const request = require('request');
-request.post('http://www.jamapi.xyz/', {form: {url: 'http://www.radcircle.com', json_data: '{"title": "title"}'}}, function(err, response, body) {
-  console.log(body); // Return the title from http://www.radcircle.com
-})  
-```
-### Ruby
-```ruby
-require 'httparty'
-response = HTTParty.post("http://www.jamapi.xyz/",
-  :body => { "url" => "http://www.radcircle.com", "json_data" => "{'title': 'title'}"})  
-puts response.to_json
-```
 
-## Features
-Will auto pull the img src on corresponding elements, will auto pull the href from links. If passing JSON, you must provide a "elem" property, and then the element attributes you want. When you pass an array with JSON you'll get a structure that looks as follows:
-```json
-[
-  {
-      "index": 0,
-      "value": {
-          "value": "Porter Robinson – Sad Machine (Cosmo’s Midnight Remix)"
-      }
-  },
-  {
-      "index": 1,
-      "value": {
-          "value": "Listen to Rachel Platten’s “Stand By You”"
-      }
-  }]
-```
-All the attributes you provide as JSON will be put inside of the value property, and the index property is to be able to track what index it ocurred in the DOM. I nested JSON values into it's own so that you can still have an "index" property returned and not run into issues.
+## How to get started
 
-## How it works
-Main power of the program is in `services/html_to_json.js`. Start site with `node index` after doing `npm install`.
+This code runs with [Node.js](nodejs.org). Make sure you have it installed.
 
-Suggested node version is at least `4.2.2`
+- Pull this repository.
+- `$ cd unofficial-fussball-de-api`
+- `$ npm install`
+- Open `f.js` and edit `var urlToCrawl`. This is the URL to your league.
+- Start Node.js server: `$ node index.js`
+- Open another terminal window
+- `$ node f.js`
+- You should see the JSON output in your terminal.
+
+## A piece of note
+
+I've got no affiliation with [fussball.de](fussball.de). Changes in the code may break this API.
