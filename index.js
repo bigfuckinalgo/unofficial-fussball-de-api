@@ -1,6 +1,3 @@
-var fs = require("fs");
-
-var Path = require('path');
 var Hapi = require('hapi');
 
 var server = new Hapi.Server({ debug: { request: ['error'] } });
@@ -12,14 +9,6 @@ server.connection({
     }
   }
 });
-
-server.views({
-  engines: {
-    jade: require('jade')
-  },
-  relativeTo: __dirname + '/views',
-});
-
 
 // Configure routes
 var routes = require('./routes')(server);
