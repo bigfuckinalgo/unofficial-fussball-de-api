@@ -2,7 +2,7 @@
   "name": "unofficial-fussball-de-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "author": "Maurice Wipf",
   "license": "GPL",
   "dependencies": {
