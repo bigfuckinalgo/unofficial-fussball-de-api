@@ -45,11 +45,12 @@ This code runs with [Node.js](nodejs.org). Make sure you have it installed.
 - Pull this repository.
 - `$ cd unofficial-fussball-de-api`
 - `$ npm install`
-- Open `f.js` and edit `var urlToCrawl`. This is the URL to your league.
-- Start Node.js server: `$ node index.js`
-- Open another terminal window
-- `$ node f.js`
-- You should see the JSON output in your terminal.
+- Open `router.js` and edit `var fussballDeUrl`. This is the URL to your league.
+- Start Node.js server: `$ node server.js`
+- Visit [localhost:5000](localhost:5000).
+
+## See in Action
+[https://fussball-de-api.herokuapp.com](https://fussball-de-api.herokuapp.com)
 
 ## A piece of note
 
